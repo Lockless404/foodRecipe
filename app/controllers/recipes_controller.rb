@@ -15,7 +15,8 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = current_user.recipe.new(params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public))
+    @recipe = current_user.recipe.new(params.require(:recipe).permit(:name, :preparation_time, :cooking_time,
+                                                                     :description, :public))
     if @recipe.save
       flash.notice = 'Recipe was successfully created.'
       redirect_to user_recipes_path(@recipe.user)

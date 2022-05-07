@@ -32,13 +32,13 @@ table {
 
 td,
 th {
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   text-align: left;
   padding: 8px;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #ddd;
 }
 
 button {
@@ -58,6 +58,7 @@ hr {
   width: 100%;
   border: solid 1px;
 }
+
 .flex {
   display: flex;
 }

@@ -1,10 +1,10 @@
 <tr>
-  <td><%=food.name%></td>
-  <td><%=food.measurement_unit%></td>
-  <td><%=food.price%></td>
+  <td><%=food.food.name%></td>
+  <td><%=food.food.measurment_unit%></td>
+  <td><%=food.food.price%></td>
   <td>
-    <% if can? :destroy, food %> 
-        <%= button_to 'Delete', user_food_path(@user.id, food.id), method: :delete %>    
+    <% if can? :manage, @recipe %> 
+        <%= button_to 'Delete', user_recipe_recipe_food_path(user_id: @user.id, recipe_id: @recipe.id, id: food.id), method: :delete %>    
     <% end %>
   </td>
 </tr>

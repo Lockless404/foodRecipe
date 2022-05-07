@@ -1,6 +1,7 @@
 class GeneralShoppingListController < ApplicationController
   def index
-    @recipes = current_user.recipes
+    @user = current_user
+    @recipes = current_user.recipe
 
     total_items(@recipes)
     total_value(@recipes)

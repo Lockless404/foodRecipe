@@ -1,5 +1,5 @@
-<div class="page">
-  <h1>Public Recipes</h1>
-  <%@recipes.each do |recipe|%>
-  <%= render partial: "shared/publicRecipes", locals: { recipe: recipe } %>
-</div>
+<h1>Public Recipes</h1>
+<%@recipes.each do |recipe|%>
+<%= render partial: "shared/publicRecipes", locals: { recipe: recipe } %>
+<% end %>
+<%= link_to 'View your Food', user_foods_path(@user) %>

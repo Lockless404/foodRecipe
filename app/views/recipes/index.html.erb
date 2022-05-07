@@ -1,4 +1,4 @@
-<div class="page">
+  <%= link_to 'Add Recipe', new_user_recipe_path %>
   <%@recipes.each do |recipe|%>
   <%= render partial: "shared/recipe", locals: { recipe: recipe } %>
-</div>
+  <% end %>

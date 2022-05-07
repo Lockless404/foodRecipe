@@ -1,0 +1,25 @@
+<h1>Add Recipe</h1>
+
+<%= form_with url: user_recipes_path, method: :post, local: true, scope: :recipe do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :preparation_time %><br>
+    <%= form.text_field :preparation_time %>
+  </div>
+  <div>
+    <%= form.label :cooking_time %><br>
+    <%= form.text_field :cooking_time %>
+  </div>
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :public, "Public" %>
+    <%= form.check_box :public %>
+  </div>
+  <%= form.submit %>
+<% end %>

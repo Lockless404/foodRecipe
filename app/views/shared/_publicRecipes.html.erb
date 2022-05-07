@@ -1,6 +1,6 @@
 <div class="flex">
   <div class="recipeLeft">
-    <h2><%=link_to recipe.name, recipe_path(id: recipe.id)%></h2>
+    <h2><%=link_to recipe.name, user_recipe_path(user_id: @user.id, id: recipe.id)%></h2>
     <p>By: <%= recipe.user.name %></p>
   </div>
   <div>

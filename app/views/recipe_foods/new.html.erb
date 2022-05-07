@@ -1,0 +1,13 @@
+<h1>Add Ingrediants</h1>
+
+<%= form_with url: user_recipe_recipe_foods_path, method: :post, local: true, scope: :recipe_food do |form| %>
+  <div>
+    <%= form.label :Food %><br>
+    <%= form.select :food_id, @foods.collect { |food| [food.name, food.id] } %>
+  </div>
+  <div>
+    <%= form.label :quantity %><br>
+    <%= form.number_field :quantity, min: 0 %>
+  </div>
+  <%= form.submit %>
+<% end %>

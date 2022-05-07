@@ -6,7 +6,7 @@ RSpec.describe 'Testing recipe views', type: :feature do
       user = User.create(name: 'user', email: 'user@user.com', password: '123456')
       (1..4).each do |i|
         user.recipe.create(name: "recipe #{i}", preparation_time: '1hr', cooking_time: '1hr', description: 'lorem ipsum',
-                            public: true)
+                           public: true)
       end
 
       visit new_user_session_path

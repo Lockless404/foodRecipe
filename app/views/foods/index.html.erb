@@ -7,21 +7,7 @@
       <th>Unit price</th>
       <th>Actions</th>
     </tr>
-    <tr>
-      <td>Potato</td>
-      <td>Grams</td>
-      <td>$1</td>
-      <td>
-        <a>Delete</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Tomato</td>
-      <td>Grams</td>
-      <td>$2</td>
-      <td>
-        <a>Delete</a>
-      </td>
-    </tr>
+    <%@foods.each do |food|%>
+    <%= render partial: "shared/foods", locals: { foods: food } %>
   </table>
 </div>

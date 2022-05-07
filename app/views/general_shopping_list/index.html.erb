@@ -2,10 +2,10 @@
 <h1>Shopping List</h1>
   <div class="recipe">
     <div class="recipeLeft">
-      <h3>Amount of items to buy:</h3>
+      <h3>Amount of items to buy: <%= @food %></h3>
     </div>
     <div>
-      <h3>Value of food needed:</h3>
+      <h3>Value of food needed: <%= @value %></h3>
     </div>
   </div>
   <table>
@@ -14,15 +14,7 @@
       <th>Quantity</th>
       <th>Price</th>
     </tr>
-    <tr>
-      <td>Potato</td>
-      <td>Grams</td>
-      <td>$1</td>
-    </tr>
-    <tr>
-      <td>Tomato</td>
-      <td>Grams</td>
-      <td>$2</td>
-    </tr>
+    <%@recipes.each do |recipe|%>
+    <%= render partial: "shared/publicRecipes", locals: { recipe: recipe } %>
   </table>
 </div>

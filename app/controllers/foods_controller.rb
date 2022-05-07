@@ -8,5 +8,9 @@ class FoodsController < ApplicationController
 
   def create; end
 
-  def destroy; end
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to user_foods_path(current_user.id), notice: 'Food successfully deleted'
+  end
 end

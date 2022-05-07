@@ -1,13 +1,23 @@
 <div class="page">
-  <h1>Recipe 2</h1>
+  <h1><%= @recipe.name%></h1>
   <div class="recipe">
     <div class="recipeLeft">
-      <h3>Prepration Time: 1 Hour</h3>
-      <h3>Cooking Time: 1 Hour</h3>
-      <h3>Description</h3>
+      <h3>Prepration Time: <%= @recipe.preparation_time%> Hour/s</h3>
+      <h3>Cooking Time: <%= @recipe.cooking_time%> Hour/s</h3>
+      <h3><%= @recipe.description%></h3>
     </div>
     <div>
-      checkbox
+      <% if can? :manage, @recipe%>
+        <%= form_with url: user_recipe_path(@recipe), method: "put" do |form| %>
+            <% if @recipe.public == false %>
+              <%= form.check_box :public, id:"publicCheck", onchange: "this.form.submit();"%>
+              <label for="publicCheck">Public</label>
+            <% else %>
+              <%= form.check_box :public, id:"publicCheck", checked: true, onchange: "this.form.submit();" %>
+              <label for="publicCheck">Public</label>
+            <%end%>
+        <%end%> 
+      <%end%>
     </div>
   </div>
   <div class="recipe">
@@ -22,21 +32,7 @@
       <th>Value</th>
       <th>Actions</th>
     </tr>
-    <tr>
-      <td>Potato</td>
-      <td>10 grams</td>
-      <td>$1</td>
-      <td>
-        <a>Delete</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Tomato</td>
-      <td>10 Grams</td>
-      <td>$2</td>
-      <td>
-        <a>Delete</a>
-      </td>
-    </tr>
+    <%@foods.each do |food|%>
+    <%= render partial: "shared/ingrediants", locals: { foods: food } %>
   </table>
 </div>

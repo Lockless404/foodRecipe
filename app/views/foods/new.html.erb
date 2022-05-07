@@ -1,0 +1,17 @@
+<h1>Add Food</h1>
+
+<%= form_with url: user_foods_path, method: :post, local: true, scope: :food do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :measurement_unit %>
+    <%= form.text_field :measurment_unit %>
+  </div>
+  <div>
+    <%= form.label :unit_price %><br>
+    <%= form.text_field :price %>
+  </div>
+  <%= form.submit %>
+<% end %>

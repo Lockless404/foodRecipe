@@ -5,13 +5,41 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
+    @user = current_user
+    @recipe = Recipe.find(params[:id])
     @foods = @recipe.recipe_foods.includes(:food)
   end
 
-  def new; end
+  def new
+    @recipe = Recipe.new
+  end
 
-  def create; end
+  def create
+    @recipe = current_user.recipe.new(params.require(:recipe).permit(:name, :preparation_time, :cooking_time,
+                                                                     :description, :public))
+    if @recipe.save
+      flash.notice = 'Recipe was successfully created.'
+      redirect_to user_recipes_path(@recipe.user)
+    else
+      flash.alert = 'Recipe was not created.'
+      render :new
+    end
+  end
 
-  def destroy; end
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(public: params[:public])
+      flash[:success] = 'public status successfully updated'
+    else
+      flash[:error] = 'Error: could not update public status'
+    end
+    redirect_to user_recipe_path(@recipe)
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy!
+    flash[:success] = 'Recipe deleted!'
+    redirect_to recipes_path, notice: 'Recipe successfully deleted'
+  end
 end

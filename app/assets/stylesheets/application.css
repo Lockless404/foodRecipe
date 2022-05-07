@@ -19,6 +19,14 @@ body {
   margin: 0;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 1% 2.5%;
+}
+
 .page {
   display: flex;
   flex-direction: column;

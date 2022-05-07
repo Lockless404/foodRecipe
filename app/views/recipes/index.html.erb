@@ -1,1 +1,4 @@
-<h1>Hehehe recipe index</h1>
+<div class="page">
+  <%@recipes.each do |recipe|%>
+  <%= render partial: "shared/recipe", locals: { recipe: recipe } %>
+</div>

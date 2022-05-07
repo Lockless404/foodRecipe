@@ -1,7 +1,13 @@
 class RecipesController < ApplicationController
-  def index; end
+  def index
+    @user = current_user
+    @recipes = Recipe.where(user_id: current_user.id)
+  end
 
-  def show; end
+  def show
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
+    @foods = @recipe.recipe_foods.includes(:food)
+  end
 
   def new; end
 

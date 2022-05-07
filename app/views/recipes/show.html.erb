@@ -1,0 +1,37 @@
+<h1><%= @recipe.name%></h1>
+<div class="recipe">
+  <div class="recipeLeft">
+    <h3>Prepration Time: <%= @recipe.preparation_time%> Hour/s</h3>
+    <h3>Cooking Time: <%= @recipe.cooking_time%> Hour/s</h3>
+    <h3><%= @recipe.description%></h3>
+  </div>
+  <div>
+    <% if can? :manage, @recipe%>
+      <%= form_with url: user_recipe_path(@recipe), method: "put" do |form| %>
+          <% if @recipe.public == false %>
+            <%= form.check_box :public, id:"publicCheck", onchange: "this.form.submit();"%>
+            <label for="publicCheck">Public</label>
+          <% else %>
+            <%= form.check_box :public, id:"publicCheck", checked: true, onchange: "this.form.submit();" %>
+            <label for="publicCheck">Public</label>
+          <%end%>
+      <%end%> 
+    <%end%>
+  </div>
+</div>
+<div class="recipe">
+  <%= link_to 'Add ingredient', new_user_recipe_recipe_food_path(@user, @recipe) %>
+        <%= link_to 'Generate shopping list', user_general_shopping_list_index_path(current_user.id) %>
+</div>
+<hr>
+<table>
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+    <th>Actions</th>
+  </tr>
+  <%@foods.each do |food|%>
+  <%= render partial: "shared/ingrediants", locals: { food: food } %>
+  <%end%>
+</table>

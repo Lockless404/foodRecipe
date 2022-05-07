@@ -1,0 +1,13 @@
+<%= link_to 'Add Food', new_user_food_path %>
+<table>
+  <tr>
+    <th>Food</th>
+    <th>Measurement unit</th>
+    <th>Unit price</th>
+    <th>Actions</th>
+  </tr>
+  <%@foods.each do |food|%>
+  <%= render partial: "shared/foods", locals: { food: food } %>
+  <% end %>
+</table>
+<%= link_to 'View Recipes', user_recipes_path %>

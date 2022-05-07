@@ -1,0 +1,10 @@
+<div class="flex">
+  <div class="recipeLeft">
+    <h2><%=link_to recipe.name, user_recipe_path(user_id: @user.id, id: recipe.id)%></h2>
+    <p>By: <%= recipe.user.name %></p>
+  </div>
+  <div>
+    <h3>Total Food items: <%= recipe.foods.distinct.count(:id)%></h3>
+    <h3>Total Price: <%= recipe.foods.sum ('quantity * price') %></h3>
+  </div>
+</div>

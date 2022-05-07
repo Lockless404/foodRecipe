@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+body {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 3% 5%;
+}
+
+table {
+  margin: 5% 0;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+button {
+  align-self: flex-end;
+}
+
+.recipe {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipeLeft {
+  width: 50%;
+}
+
+hr {
+  width: 100%;
+  border: solid 1px;
+}
+.flex {
+  display: flex;
+}
